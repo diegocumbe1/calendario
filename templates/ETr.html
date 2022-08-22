@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+        {% block tabla %}
+    
+
+                    <thead class="thead-light">
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Evapotraspiración</th>
+                         
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in list_etapa %}
+                        <tr>
+                            <th scope="row ">{{row[1]}}</th>
+                            <td>{{row[7]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+             
+        {% endblock %}
+   

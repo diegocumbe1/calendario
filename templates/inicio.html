@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block tabla %}
+<thead class="thead-light">
+  <tr>
+    <th scope="col">Fecha</th>
+    <th scope="col">Temperatura °C</th>
+    <th scope="col">Humedad <br> Relativa</th>
+    <th scope="col">Velocidada <br>del <br>Viento</th>
+    <th scope="col">Radiación</th>
+    <th scope="col">Precipitación</th>
+    <th scope="col">ETO</th>
+    <th scope="col">Nombre</th>
+  </tr>
+</thead>
+<tbody>
+  {% for row in list_etapa %}
+  <tr>
+    <th scope="row">
+      <div class="media align-items-center">
+        <a href="#" class="avatar rounded-circle mr-3">
+          <img alt="Image placeholder"
+            src="https://www.kindpng.com/picc/m/6-67193_calendario-fechas-horario-fecha-plan-diario-icono-blue.png">
+        </a>
+        <div class="media-body">
+          <span class="mb-0 text-sm">{{row[1]}}</span>
+        </div>
+      </div>
+    </th>
+    <td>
+      {{row[2]}}
+    </td>
+    <td>
+      {{row[3]}}
+    </td>
+    <td>
+      {{row[4]}}
+    </td>
+    <td>
+      {{row[5]}}
+    </td>
+    <td>
+      {{row[6]}}
+    </td>
+    <td>
+      {{row[7]}}
+    </td>
+    <td>
+      {{row[8]}}
+    </td>
+  </tr>
+  {% endfor %}
+
+</tbody>
+{% endblock %}
