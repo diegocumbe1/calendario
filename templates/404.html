@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap 4-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/themes/semantic/bootstrap-table-semantic.min.css">
+    <!-- css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Calendar</title>
+    <!--Main Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+    <a class="navbar-brand" href="{{ url_for('inicio')}}" style=" margin: 0px 20px 0px 2.5%;">Inicio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url_for('ETr')}}"> ETr</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{{ url_for('Kc')}}">Kc</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('ET')}}">ET</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('DAS')}}">DAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('Pr')}}">Pr</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('NAP')}}">NAP</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('Nb')}}">Nb</a>
+        </li>
+       
+      </ul>
+    </div>
+  </nav>
+
+</head>
+
+<!--Main Navigation-->
+<body>
+    
+    <figure>
+        <div class="sad-mac"></div>
+        <figcaption>
+            <span class="sr-text">Error 404: Not Found</span>
+            <span class="e"></span>
+            <span class="r"></span>
+            <span class="r"></span>
+            <span class="o"></span>
+            <span class="r"></span>
+            <span class="_4"></span>
+            <span class="_0"></span>
+            <span class="_4"></span>
+            <span class="n"></span>
+            <span class="o"></span>
+            <span class="t"></span>
+            <span class="f"></span>
+            <span class="o"></span>
+            <span class="u"></span>
+            <span class="n"></span>
+            <span class="d"></span>
+        </figcaption>
+    </figure>
+       
+  </body>
+  
+
+</html>
