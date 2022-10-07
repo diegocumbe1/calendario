@@ -5,17 +5,17 @@
     
 
                     <thead class="thead-light">
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Temperaturas (°C)</th>
-                         
-                           
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Temperaturas (°C)</th>
                         </tr>
+¿ 
                     </thead>
                     <tbody>
                         {% for row in list_etapa %}
                         <tr>
-                            <th scope="row ">{{row[1]}}</th>
-                            <td>{{row[2]}}</td>
+                            <th scope="row ">{{row[0]}}</th>
+                            <td>{{row[1]}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>

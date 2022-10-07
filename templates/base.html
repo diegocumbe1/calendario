@@ -54,11 +54,12 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <div id ="intro" class="container-lg text-center border-top-20">
     <!-- Table -->          
-      <div class="col">
-        <div class="card shadow">
-          <div class="card-header border-0">
-            <h2 class="mb-0">Calendario de riego</h2>
-          </div>
+    <div class="col">
+      
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h2 class="tittle-primary">Calendario de riego</h2>
+          <button type="button"class="boton3" href="{{ url_for('predict')}}" onclick="window.location.href ='{{ url_for('predict') }}'">Predecir</button>
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
         {% block tabla %} 
@@ -66,6 +67,7 @@
         {% endblock %}
       </table>
     </div>
+    
     
     <div class="card-footer py-4">
       <nav aria-label="...">
@@ -99,8 +101,7 @@
 <div class="row mt-5">
 <div class="col">
   <div class="card bg-default shadow">
-   
-   
+      
   </div>
 </div>
 </div>
