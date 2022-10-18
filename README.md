@@ -10,7 +10,7 @@ pip install numpy
 pip install tensorflow
 
 
-##correr proyecto
+## correr proyecto
 python index.py
 
 ubicacion database: calendario-riego\Database\mydb.sql
