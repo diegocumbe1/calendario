@@ -20,7 +20,7 @@ cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 @app.route('/', methods=['GET'])
 @app.route('/inicio/page/<int:page>')
-def inicio(page=2):
+def inicio(page=1):
    
     # return render_template('inicio.html', list_etapa=list_etapa)
     try:
@@ -29,12 +29,12 @@ def inicio(page=2):
         limit = 20
         offset = page
         # paginate = estacion_data.query.paginate(limit=limit, offset=offset)
-        print('limit -->',limit) 
+        # print('limit -->',limit) 
         print('offset -->',offset)
         # print('paginate: ', paginate)
         cursor.execute(estacion_data ,(limit,offset))  # execute SQL
         list_etapa = cursor.fetchall()
-        print('fecha inicio',list_etapa)
+        # print('fecha inicio',list_etapa)
         # data = list_etapa.query.filter().paginate(page=1, per_page=10)
         # print('listado estacion',list_etapa)
         # print('eto -->',listado_eto) 
@@ -47,7 +47,9 @@ def inicio(page=2):
 
     return render_template(
         'inicio.html',
-        list_etapa=list_etapa
+        list_etapa=list_etapa,
+        page=page,
+        route='inicio/page'
     )
 
 
@@ -128,7 +130,6 @@ def predict():
     for i,day in enumerate(range(periods)):
         date = (start + datetime.timedelta(days = day))
         daterange.append([date,prediccion_eto[i]])
-    print(daterange)
     return render_template('Etr_predict.html', list_etapa=daterange)
 
 
