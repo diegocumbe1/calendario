@@ -25,14 +25,17 @@ def inicio(page=1):
     # return render_template('inicio.html', list_etapa=list_etapa)
     try:
     # page,per_page,offset = get_page_args(page_parameters="page",per_page_parameters="per_page")
-        estacion_data = "SELECT * FROM mydb.estacion  ORDER BY fechahora DESC limit %s offset %s"
-        limit = 20
-        offset = page
+        # estacion_data = "SELECT * FROM mydb.estacion  ORDER BY fechahora DESC limit %s offset %s"
+        # limit = 20
+        # offset = page
+        estacion_data = "SELECT * FROM mydb.estacion  ORDER BY fechahora DESC "
+        
         # paginate = estacion_data.query.paginate(limit=limit, offset=offset)
         # print('limit -->',limit) 
-        print('offset -->',offset)
         # print('paginate: ', paginate)
-        cursor.execute(estacion_data ,(limit,offset))  # execute SQL
+        # cursor.execute(estacion_data ,(limit,offset))  # execute SQL
+        cursor.execute(estacion_data)  # execute SQL
+
         list_etapa = cursor.fetchall()
         # print('fecha inicio',list_etapa)
         # data = list_etapa.query.filter().paginate(page=1, per_page=10)

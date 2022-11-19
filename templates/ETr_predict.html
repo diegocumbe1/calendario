@@ -3,22 +3,19 @@
 <thead class="thead-light">
   <tr>
     <th scope="col">Fecha</th>
-    <th scope="col">ETO Estiamda</th>
+    <th scope="col">ETO Estimada</th>
+    <th scope="col">Cantidad agua (mm3)</th>
   </tr>
 </thead>
 <tbody>
   {% for row in list_etapa %}
   <tr>
     <th scope="row">
-      <div class="media align-items-center">
-        <a href="#" class="avatar rounded-circle mr-3">
-          <img alt="Image placeholder"
-            src="https://www.kindpng.com/picc/m/6-67193_calendario-fechas-horario-fecha-plan-diario-icono-blue.png">
-        </a>
-        <div class="media-body">
-          <span class="mb-0 text-sm">{{row[0]}}</span>
-        </div>
-      </div>
+      <div class="media-body">
+        <img  class="avatar"  
+          src="https://www.kindpng.com/picc/m/6-67193_calendario-fechas-horario-fecha-plan-diario-icono-blue.png">
+        <span class="mb-0 text-sm">{{row[0]}}</span>
+    </div>
     </th>
     <td>
       {{row[1]}}

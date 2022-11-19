@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/themes/semantic/bootstrap-table-semantic.min.css">
     <!-- css-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <title>Calendar</title>
+    <title>Calendario</title>
 
 </head>
 
@@ -36,92 +36,68 @@
           <a class="nav-link" href="{{ url_for('DAS')}}">Temperatura</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('Pr')}}">Pr</a>
+          <a class="nav-link" href="{{ url_for('Pr')}}">Humedad Relativa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('NAP')}}">NAP</a>
+          <a class="nav-link" href="{{ url_for('NAP')}}">Velocidad Viento</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('Nb')}}">Nb</a>
+          <a class="nav-link" href="{{ url_for('Nb')}}">Precipitacion</a>
         </li>
        
       </ul>
     </div>
   </nav>
+
 <body>
       
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Table -->          
+  <div id="principal" class="col-sm-8 mx-auto">
+    
+    <div class="card shadow ">
+      <div id="title_table" class=" border-30 mx-auto">
+        <h2 class="tittle-primary ">Calendario de riego</h2>
+        <button id="predict_button" href="{{ url_for('predict')}}" onclick="window.location.href ='{{ url_for('predict') }}'">Predecir</button>
+      </div>
+        <div class="table-responsive">
+          <table id="data" class="table table-striped table-bordered" style="width:100%">
 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <div id ="intro" class="container-lg text-center border-top-20">
-    <!-- Table -->          
-    <div class="col">
+            {% block tabla %} {% endblock %}
+          </table>
+        </div>
       
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <h2 class="tittle-primary">Calendario de riego</h2>
-          <button type="button"class="boton3" href="{{ url_for('predict')}}" onclick="window.location.href ='{{ url_for('predict') }}'">Predecir</button>
-          <div class="table-responsive">
-            <table class="table align-items-center table-flush">
-        {% block tabla %} 
-
-        {% endblock %}
-      </table>
-    </div>
-    
-    
-    <div class="card-footer py-4">
-      <nav aria-label="...">
-        <ul class="pagination justify-content-end mb-0">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">
-              <i class="fas fa-angle-left"></i>
-              <span class="sr-only">Previous</span>
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">
-              <i class="fas fa-angle-right"></i>
-              <span class="sr-only">Next</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
     </div>
   </div>
-</div>
-</div>
-<!-- Dark table -->
-<div class="row mt-5">
-<div class="col">
-  <div class="card bg-default shadow">
-      
-  </div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-
-    <!--Main Navigation-->
-
-    <!--Main layout-->
-
-    <!--Main layout-->
-
-    <!--Footer-->
 
     <!--Footer-->
   </body>
-  <footer class="bg-transparent text-lg-start">
-      <!-- Copyright -->
+  <footer class="text-center text-lg-start bg-white text-muted">
+
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+      © 2021 Copyright:
+      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- <footer class="bg-transparent text-lg-start">
       <div class="text-center p-3" style="background-color: rgba(7, 7, 7, 0.354);">
-          © 2021 Copyright:
+          © 2022 Copyright:
           <a class="text-dark" href=""> calendario de riego</a>
       </div>
-      <!-- Copyright -->
-  </footer>
+  </footer> -->
+  <!-- Footer -->
+
+<!-- Footer -->
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+  {% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+  </script>
+  {% endblock %}
 
 </html>
