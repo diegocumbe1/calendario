@@ -1,7 +1,7 @@
 from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 # from flask_paginate import Pagination, get_page_args,
-import numpy as np
+# import numpy as np
 import psycopg2
 import psycopg2.extras
 import datetime
@@ -28,7 +28,7 @@ def inicio(page=1):
         # estacion_data = "SELECT * FROM mydb.estacion  ORDER BY fechahora DESC limit %s offset %s"
         # limit = 20
         # offset = page
-        estacion_data = "SELECT * FROM mydb.estacion  ORDER BY fechahora DESC limit 3000"
+        estacion_data = "SELECT * FROM mydb.estacion  ORDER BY fechahora DESC limit 1000 offset 0"
         
         # paginate = estacion_data.query.paginate(limit=limit, offset=offset)
         # print('limit -->',limit) 
