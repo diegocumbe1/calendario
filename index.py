@@ -28,7 +28,7 @@ def inicio(page=1):
         # estacion_data = "SELECT * FROM mydb.estacion  ORDER BY fechahora DESC limit %s offset %s"
         # limit = 20
         # offset = page
-        estacion_data = "SELECT * FROM mydb.estacion  ORDER BY fechahora DESC "
+        estacion_data = "SELECT * FROM mydb.estacion  ORDER BY fechahora DESC limit 3000"
         
         # paginate = estacion_data.query.paginate(limit=limit, offset=offset)
         # print('limit -->',limit) 
