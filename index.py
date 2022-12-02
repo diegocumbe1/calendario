@@ -6,6 +6,9 @@ import psycopg2
 import psycopg2.extras
 import datetime
 import sqlite3
+from decouple import config
+
+import os
 
 from config import config
 
@@ -142,7 +145,10 @@ if __name__ == '__main__':
 
     # Error Handler
     app.errorhandler(404)(page_not_found)
-    app.run(debug=True)
+    port = int(os.getenv('PORT',5000))
+    print("Starting app on port %d" % port)
+
+    app.run(host='0.0.0.0', port=port)
     cursor.close()
     conn.close()
 
