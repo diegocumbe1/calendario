@@ -23,6 +23,10 @@ body {
 	margin: 30px 0px 30px ;
 }
 
+.tittle-primary {
+	margin: 30px 0px 30px ;
+}
+
 .table-responsive {
 	margin: 10px 10px 10px 10px;
 
@@ -60,20 +64,14 @@ body {
   font-weight: 500;
   border-radius: 100px;
   font-weight: bold;
-  padding: 1.18em 1.32em 1.03em;
-  line-height: 1;
-  border-radius: 1em;
-  position: relative;
   min-width: 8.23em;
-  text-decoration: none;
   font-family: var(--font);
   font-size: 1.25rem;
-  position: flex;
-
   background: rgba(0,0,0,0);
   border: 3px solid;
   border-color: #318aac;
   transition: all 1s ease;
+  margin: 0 50px ;
 
 }
 #predict_button:hover {
