@@ -1,18 +1,12 @@
 # calendario
 
-## instalaciones
-pip install flask
-pip install Flask-SQLAlchemy
-pip install psycopg2
-pip install python-decouple
+Install the required dependencies:
 
-pip install numpy
-pip install tensorflow
-
+```
+python -m pip install -r requirements.txt
+```
 
 ## correr proyecto
 python index.py
-
-ubicacion database: calendario-riego\Database\mydb.sql
 
 
