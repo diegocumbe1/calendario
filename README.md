@@ -10,6 +10,6 @@ python -m pip install -r requirements.txt
 ```
 python index.py
 ```
-open url to view project
-[https://calendario-riego.herokuapp.com/](https://calendario-riego.herokuapp.com/]
+open url to view Deploy
+[https://calendario-riego.herokuapp.com/](https://calendario-riego.herokuapp.com/)
 
