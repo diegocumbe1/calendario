@@ -108,13 +108,6 @@ def Nb():
 
     return render_template('Nb.html', list_etapa=list_etapa)
 
-
-def page_not_found(error):
-    return render_template('404.html'), 404
-
-
-
-
 @app.route('/prediction')
 def predict():
 
@@ -136,9 +129,11 @@ def predict():
     for i,day in enumerate(range(periods)):
         date = (start + datetime.timedelta(days = day))
         daterange.append([date,prediccion_eto[i]])
-    return render_template('Etr_predict.html', list_etapa=daterange)
+    return render_template('ETr_predict.html', list_etapa=daterange)
 
 
+def page_not_found(error):
+    return render_template('404.html'), 404
 
 if __name__ == '__main__':
     app.config.from_object(config['development'])
