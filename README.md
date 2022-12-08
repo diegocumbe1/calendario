@@ -7,6 +7,8 @@ python -m pip install -r requirements.txt
 ```
 
 ## correr proyecto
+```
 python index.py
+```
 
 
