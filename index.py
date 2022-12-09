@@ -61,7 +61,7 @@ def inicio(page=1):
 
 @app.route('/ETr')
 def ETr():
-    fecha_eto = "SELECT fechahora,eto FROM mydb.estacion  ORDER BY fechahora DESC LIMIT %s"
+    fecha_eto = "SELECT fechahora,eto FROM mydb.estacion  ORDER BY fechahora DESC limit 1000 offset 0"
     cursor.execute(fecha_eto, (10,))
     list_fecha_eto = cursor.fetchall()
     return render_template('ETr.html', list_etapa=list_fecha_eto)
@@ -70,7 +70,7 @@ def ETr():
 @app.route('/Kc')
 def Kc():
 
-    fecha_kc = "SELECT fechahora,radiacion FROM mydb.estacion  ORDER BY fechahora DESC LIMIT %s"
+    fecha_kc = "SELECT fechahora,radiacion FROM mydb.estacion  ORDER BY fechahora DESC limit 1000 offset 0"
     cursor.execute(fecha_kc, (10,))
     list_fecha_kc = cursor.fetchall()
     return render_template('Kc.html', list_etapa=list_fecha_kc)
@@ -78,14 +78,16 @@ def Kc():
 
 @app.route('/ET')
 def ET():
-
+    fecha_kc = "SELECT fechahora,radiacion FROM mydb.estacion  ORDER BY fechahora DESC limit 1000 offset 0"
+    cursor.execute(fecha_kc, (10,))
+    list_etapa = cursor.fetchall()
     return render_template('ET.html', list_etapa=list_etapa)
 
 
 @app.route('/Temperatura')
 def DAS():
 
-    fecha_tem = "SELECT fechahora,temperatura FROM mydb.estacion  ORDER BY fechahora DESC LIMIT %s"
+    fecha_tem = "SELECT fechahora,temperatura FROM mydb.estacion  ORDER BY fechahora DESC limit 1000 offset 0"
     cursor.execute(fecha_tem, (10,))
     list_fecha_tem = cursor.fetchall()
     return render_template('DAS.html', list_etapa=list_fecha_tem)
@@ -93,19 +95,26 @@ def DAS():
 
 @app.route('/Pr')
 def Pr():
-
+    fecha_kc = "SELECT fechahora,radiacion FROM mydb.estacion  ORDER BY fechahora DESC limit 1000 offset 0"
+    cursor.execute(fecha_kc, (10,))
+    list_etapa = cursor.fetchall()
     return render_template('Pr.html', list_etapa=list_etapa)
 
 
 @app.route('/NAP')
 def NAP():
 
+    fecha_kc = "SELECT fechahora,radiacion FROM mydb.estacion  ORDER BY fechahora DESC limit 1000 offset 0"
+    cursor.execute(fecha_kc, (10,))
+    list_etapa = cursor.fetchall()    
     return render_template('NAP.html', list_etapa=list_etapa)
 
 
 @app.route('/Nb')
 def Nb():
-
+    fecha_kc = "SELECT fechahora,radiacion FROM mydb.estacion  ORDER BY fechahora DESC limit 1000 offset 0"
+    cursor.execute(fecha_kc, (10,))
+    list_etapa = cursor.fetchall()
     return render_template('Nb.html', list_etapa=list_etapa)
 
 @app.route('/prediction')
