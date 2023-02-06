@@ -128,7 +128,8 @@ def predict():
     dato_enviar = [i[1] for i in dato_enviar ]
     
 #--------------------------get Prediction-----------------
-    prediccion_eto = [ 2.1, 2.2, 2.3 ,2.4, 2.9, 2.0 ,2.0]
+    prediccion_eto = [ 2.1, 2.2, 2.3 ,2.4, 2.9, 2.0 ,2.0] # obetener del modelo
+    kc = 0.45 #  deberia variar
     
     
     start = datetime.datetime.today()
@@ -137,7 +138,7 @@ def predict():
     daterange = []
     for i,day in enumerate(range(periods)):
         date = (start + datetime.timedelta(days = day))
-        daterange.append([date,prediccion_eto[i]])
+        daterange.append([date,prediccion_eto[i],round(prediccion_eto[i] *kc,2)])
     return render_template('ETr_predict.html', list_etapa=daterange)
 
 
