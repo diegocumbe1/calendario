@@ -3,4 +3,5 @@
 /Database/__pycache__
 /__pycache__
 .github
-/modelo
+/modelo/LSTM_Riego
+*.pb
