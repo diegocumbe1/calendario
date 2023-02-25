@@ -7,6 +7,9 @@ import psycopg2.extras
 import datetime
 import sqlite3
 from decouple import config
+import numpy as np
+import tensorflow as tf
+from sklearn.preprocessing import MinMaxScaler
 
 import os
 
@@ -14,6 +17,8 @@ from config import config
 
 # database connection
 from Database.db import get_connection
+model_path = "./modelo/LSTM_Riego"
+model = tf.keras.models.load_model(model_path)
 
 app = Flask(__name__)
 
@@ -117,19 +122,50 @@ def Nb():
     list_etapa = cursor.fetchall()
     return render_template('Nb.html', list_etapa=list_etapa)
 
+
+def create_dataset(dataset, look_back=1):
+	dataX, dataY = [], []
+	for i in range(len(dataset)-look_back-1):
+		a = dataset[i:(i+look_back), 0]
+		dataX.append(a)
+		dataY.append(dataset[i + look_back, 0])
+	return np.array(dataX), np.array(dataY)
+ 
+def get_next_7_days(new_data):
+
+  look_back = 30
+  scaler = MinMaxScaler(feature_range=(0, 1))
+  scaler.fit_transform(new_data)
+  input_data, _ = create_dataset(new_data, look_back)
+  input_data = np.reshape(input_data, (input_data.shape[0], input_data.shape[1], 1))
+  pred = model.predict(input_data)
+  pred = scaler.inverse_transform(pred)
+  pred = [round(x[0],2 )for x in pred]
+
+  return pred
+
 @app.route('/prediction')
 def predict():
 
     fecha_eto = "SELECT fechahora,eto FROM mydb.estacion  ORDER BY fechahora DESC LIMIT %s"
-    cursor.execute(fecha_eto, (30,))
+    cursor.execute(fecha_eto, (38,))
     dato_enviar = cursor.fetchall()   
     #print(respuesta)#Trae el indice del valor más alto que traigamos en la lista "resultado"
     #retormar la prediccion de los siguientes 7 dias
     dato_enviar = [i[1] for i in dato_enviar ]
     
+
+
+
+
+
 #--------------------------get Prediction-----------------
-    prediccion_eto = [ 2.1, 2.2, 2.3 ,2.4, 2.9, 2.0 ,2.0] # obetener del modelo
+
+    # prediccion_eto = [ 2.3, 2.2, 2.3 ,2.4, 2.9, 2.0 ,4.0] # obetener del modelo
     kc = 0.45 #  deberia variar
+    dataIn = np.array(dato_enviar)
+    dataIn = dataIn.reshape(dataIn.shape[0], 1)
+    pred = get_next_7_days(dataIn)
     
     
     start = datetime.datetime.today()
@@ -138,7 +174,7 @@ def predict():
     daterange = []
     for i,day in enumerate(range(periods)):
         date = (start + datetime.timedelta(days = day))
-        daterange.append([date,prediccion_eto[i],round(prediccion_eto[i] *kc,2)])
+        daterange.append([date,pred[i],round(pred[i] *kc,2)])
     return render_template('ETr_predict.html', list_etapa=daterange)
 
 
@@ -155,5 +191,4 @@ if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=port)
     cursor.close()
-    conn.close()
 
