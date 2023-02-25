@@ -8,7 +8,6 @@ import datetime
 import sqlite3
 from decouple import config
 import numpy as np
-import tensorflow as tf
 from sklearn.preprocessing import MinMaxScaler
 
 import os
